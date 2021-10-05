@@ -1,50 +1,6 @@
 <?php 
-$result = "";
-$conn = mysqli_connect("localhost","root","","gestion_exam");
-	if(!$conn){
-		echo "error ";
-	}
-if(isset($_POST['submit'])){
-	$query = "SELECT * FROM etudiant"; 
-	$result = mysqli_query($conn,$query);
-	if(!$result){
-		echo "error au niveau de requete sql ";
-	}
-}
-if(isset($_POST['delete'])){
-	echo "the delete button has been pressed";
-	$query = "SELECT * FROM etudiant"; 
-	$result1 = mysqli_query($conn,$query);
-	while($row = mysqli_fetch_assoc($result1)){
-		$CIN  = $row['CIN'];
-
-		$query = "UPDATE etudiant SET SEMESTRE = null , FILIERE = null , SECTION  = null WHERE CIN ='$CIN'	"  ;
-		
-		$result3= mysqli_query($conn,$query);
-		if(!$result3){
-			echo "error au niveau de query de result 3";
-		}
-	}
-
-	
-	
-}
-
-if(isset($_POST['insert_filiere'])){
-	$query = "SELECT * FROM etudiant WHERE `CODE_FIL` LIKE 'PFF%' ";
-	$result = mysqli_query($conn,$query);
-	while ($row = mysqli_fetch_assoc($result)) {
-			$CIN = $row['CIN'];
-			$query = "UPDATE etudiant SET FILIERE = 'DROIT' WHERE CIN ='$CIN'	"  ;
-			mysqli_query($conn,$query);
-	}
-
-
-}
-
-
+require 'insertfil.php';
 ?>
-
 
 
 <!DOCTYPE html>
@@ -82,8 +38,8 @@ if(isset($_POST['insert_filiere'])){
 		if($result){
 			$i = 1;
 
-			while(($row = mysqli_fetch_assoc($result)) & $i < 500){
-				$i++;
+			while(( @ $row = mysqli_fetch_assoc($result))/* && $i < 500*/){
+				/*$i++;*/
 				?>
 				<tr>
 					<td><?php echo @ $row['COD_ETD'] ;?></td>

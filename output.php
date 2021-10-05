@@ -1,6 +1,16 @@
 <?php 
 if(isset($_POST['submit'])){
-	echo "wow";
+	$filiere = $_POST['filiere'];
+	$semester = $_POST['semester'];
+	$conn = mysqli_connect("localhost","root","","stage");
+	if(!$conn){
+		echo "there is a problem";
+	}
+	function insert($filiere,$semester){
+		$query= ""
+
+	}
+	$query = "SELECT * FROM etudiant WHERE CODE_FIL LIKE  "
 }
 
 ?>
