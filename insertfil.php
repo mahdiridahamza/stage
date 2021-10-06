@@ -5,7 +5,7 @@ $conn = mysqli_connect("localhost","root","","gestion_exam");
 		echo "error ";
 	}
 if(isset($_POST['submit'])){
-	$query = "SELECT * FROM etudiant WHERE CODE_FIL LIKE 'PFG35%' order by CODE_FIL asc "; 
+	$query = "SELECT * FROM etudiant WHERE CODE_FIL LIKE 'PFA11%' order by NOM asc "; 
 	$result = mysqli_query($conn,$query);
 	if(!$result){
 		echo "error au niveau de requete sql ";
@@ -40,7 +40,7 @@ if(isset($_POST['insert_filiere']))
 /*============================================================================================================*/
 
 
-	$query = "UPDATE etudiant SET FILIERE ='SMIA' WHERE `CODE_FIL` LIKE 'PFA%' ";
+	$query = "UPDATE etudiant SET FILIERE ='SMIA' WHERE `CODE_FIL` LIKE 'PFA1%' ";
 	$result = mysqli_query($conn,$query);
 	$query = "UPDATE etudiant SET SEMESTRE ='S1' WHERE `CODE_FIL` LIKE 'PFA11%' ";
 	$result = mysqli_query($conn,$query);
@@ -143,8 +143,11 @@ if(isset($_POST['insert_filiere']))
 	$result = mysqli_query($conn,$query);
 
 
-	$query = "UPDATE etudiant SET FILIERE ='SMC' WHERE `CODE_FIL` LIKE 'PFC%' ";
+	$query = "UPDATE etudiant SET FILIERE ='SMC' WHERE `CODE_FIL` LIKE 'PFC2%' ";
 	$result = mysqli_query($conn,$query);
+	$query = "UPDATE etudiant SET FILIERE ='SMC' WHERE `CODE_FIL` LIKE 'PFC3%' ";
+	$result = mysqli_query($conn,$query);
+
 	$query = "UPDATE etudiant SET SEMESTRE ='S3' WHERE `CODE_FIL` LIKE 'PFC23%' ";
 	$result = mysqli_query($conn,$query);
 	$query = "UPDATE etudiant SET SEMESTRE ='S4' WHERE `CODE_FIL` LIKE 'PFC24%' ";
